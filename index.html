@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <!--COMPARING IMAGES STYLE & JS-->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .img-comp-container {
+        position: relative;
+        height: 200px; /*should be the same height as the images*/
+      }
+
+      .img-comp-img {
+        position: absolute;
+        width: auto;
+        height: auto;
+        overflow: hidden;
+      }
+
+      .img-comp-img img {
+        display: block;
+      }
+
+      .img-comp-slider {
+        position: absolute;
+        z-index: 9;
+        cursor: ew-resize;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.226);
+        border: 5px solid white;
+        opacity: 0.8;
+        border-radius: 50%;
+      }
+    </style>
+    <script>
+      function initComparisons() {
+        var x, i;
+        /*find all elements with an "overlay" class:*/
+        x = document.getElementsByClassName("img-comp-overlay");
+        for (i = 0; i < x.length; i++) {
+          /*once for each "overlay" element:
+      pass the "overlay" element as a parameter when executing the compareImages function:*/
+          compareImages(x[i]);
+        }
+        function compareImages(img) {
+          var slider,
+            img,
+            clicked = 0,
+            w,
+            h;
+          /*get the width and height of the img element*/
+          w = img.offsetWidth;
+          h = img.offsetHeight;
+          /*set the width of the img element to 50%:*/
+          img.style.width = w / 2 + "px";
+          /*create slider:*/
+          slider = document.createElement("DIV");
+          slider.setAttribute("class", "img-comp-slider");
+          /*insert slider*/
+          img.parentElement.insertBefore(slider, img);
+          /*position the slider in the middle:*/
+          slider.style.top = h / 2 - slider.offsetHeight / 2 + "px";
+          slider.style.left = w / 2 - slider.offsetWidth / 2 + "px";
+          /*execute a function when the mouse button is pressed:*/
+          slider.addEventListener("mousedown", slideReady);
+          /*and another function when the mouse button is released:*/
+          window.addEventListener("mouseup", slideFinish);
+          /*or touched (for touch screens:*/
+          slider.addEventListener("touchstart", slideReady);
+          /*and released (for touch screens:*/
+          window.addEventListener("touchstop", slideFinish);
+          function slideReady(e) {
+            /*prevent any other actions that may occur when moving over the image:*/
+            e.preventDefault();
+            /*the slider is now clicked and ready to move:*/
+            clicked = 1;
+            /*execute a function when the slider is moved:*/
+            window.addEventListener("mousemove", slideMove);
+            window.addEventListener("touchmove", slideMove);
+          }
+          function slideFinish() {
+            /*the slider is no longer clicked:*/
+            clicked = 0;
+          }
+          function slideMove(e) {
+            var pos;
+            /*if the slider is no longer clicked, exit this function:*/
+            if (clicked == 0) return false;
+            /*get the cursor's x position:*/
+            pos = getCursorPos(e);
+            /*prevent the slider from being positioned outside the image:*/
+            if (pos < 0) pos = 0;
+            if (pos > w) pos = w;
+            /*execute a function that will resize the overlay image according to the cursor:*/
+            slide(pos);
+          }
+          function getCursorPos(e) {
+            var a,
+              x = 0;
+            e = e || window.event;
+            /*get the x positions of the image:*/
+            a = img.getBoundingClientRect();
+            /*calculate the cursor's x coordinate, relative to the image:*/
+            x = e.pageX - a.left;
+            /*consider any page scrolling:*/
+            x = x - window.pageXOffset;
+            return x;
+          }
+          function slide(x) {
+            /*resize the image:*/
+            img.style.width = x + "px";
+            /*position the slider:*/
+            slider.style.left = img.offsetWidth - slider.offsetWidth / 2 + "px";
+          }
+        }
+      }
+    </script>
+
+    <title>FMS Dental Website</title>
+  </head>
+  <body>
+    <!--NAVBAR-->
+    <div class="container">
+      <div class="fixed-top">
+        <nav class="navbar">
+          <div class="logo-container">
+            <a class="navbar-brand" href="index.html">
+              <img
+                src="images/dentist_logo_.png"
+                width="auto"
+                height="auto"
+                class="align-top"
+                alt="Dentist logo"
+                loading="lazy"
+              />
+            </a>
+            
+          </div>
+          <!--Menu bar min 768px-->
+          <div class="menubar">
+            <a href="index.html">HOME</a>
+            <a href="clinic.html">CLINIC</a>
+            <a href="doctors.html">OUR DOCTORS</a>
+            <a href="contact.html">CONTACT</a>
+          </div>
+  
+          <!--BURGER bar max 768px-->
+  
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent15"
+            aria-controls="navbarSupportedContent15"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+            <!-- Links -->
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html"
+                  >HOME <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="clinic.html">CLINIC</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="doctors.html">OUR DOCTORS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!--CAROUSEL-->
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleCaptions"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="images/AdobeStock_large_slide3.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-md-block">
+            <h5>Dental Clinic</h5>
+            <p class="carousel-para">Above and beyond customer care</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="images/AdobeStock_large_slide2.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-md-block second-different-capt">
+            <h5>Get a radiant smile</h5>
+            <p class="carousel-para">
+              Creating the healthy smile you wish and deserve
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="images/AdobeStock_84031495_large_slide1.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-md-block">
+            <!--sm SLİDER DA ÇIKMIYOR KONTROL ET-->
+            <h5>Dedicated to excellence</h5>
+            <p class="carousel-para">
+              Dentistry is our profession but people are our focus
+            </p>
+          </div>
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleCaptions"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!--TEASER PART-->
+    <main>
+      <div class="container">
+        <div class="row teaser">
+          <div class="col-xs-6 col-sm-3 teaser-col">
+            <a href="#">
+              <img src="images/TeaserIcon1.png" class="teaser-icon" alt="" />
+              <div class="teaser-content">
+                <h6 class="hgroup">Preventative Care</h6>
+                <p>Dental cleanings, X-rays, fluorides</p>
+              </div>
+            </a>
+            <button class="teaser-cta">MORE</button>
+          </div>
+          <div class="col-xs-6 col-sm-3 teaser-col">
+            <a href="#">
+              <img src="images/TeaserIcon2.png" class="teaser-icon" alt="" />
+              <div class="teaser-content">
+                <h6 class="hgroup">Restorative Care</h6>
+                <p>Tooth restoration</p>
+              </div>
+            </a>
+            <button class="teaser-cta">MORE</button>
+          </div>
+          <div class="col-xs-6 col-sm-3 teaser-col">
+            <a href="#">
+              <img src="images/TeaserIcon3.png" class="teaser-icon" alt="" />
+              <div class="teaser-content">
+                <h6 class="hgroup">Periontodology</h6>
+                <p>
+                  Curing diseases and conditionsthat affect teeth structures
+                </p>
+              </div>
+            </a>
+            <button class="teaser-cta">MORE</button>
+          </div>
+          <div class="col-xs-6 col-sm-4 teaser-col">
+            <a href="#">
+              <img src="images/TeaserIcon4.png" class="teaser-icon" alt="" />
+              <div class="teaser-content">
+                <h6 class="hgroup">Orthodontic Treatment</h6>
+                <p>Treatment of improper bitesand crooked teeth</p>
+              </div>
+            </a>
+            <button class="teaser-cta">MORE</button>
+          </div>
+        </div>
+      </div>
+      <!--MAIN-->
+      <div class="container">
+        <div class="main-head">
+          <h2>Welcome to Our Dentical Clinic</h2>
+          <p>We' ve built a long standing relationship based on trust</p>
+        </div>
+        <div class="row main-content">
+          <div class="col-xs-12 col-sm-8 content-left">
+            <p>
+              FMS DENTAL HOSPITALS, SECUNDERABAD  Dental Clinic Near Me
+
+This center is one of the compact dental centres with a complete specialty approach to dental practice. You are assured of personalized care in this clinic.This centre is one of the compact dental centres established in the year 1998, with a complete speciality approach to dental practice.
+
+It is located at one of the strategic locations, Secunderabad, being the busiest twin city of Hyderabad, walkable distance from the Secunderabad railway station. Dental Clinic Near Me
+
+Secunderabad being centrally located, empanelment patients from multiple public sector companies access this centre alongside Arogya Bhadratha (TS &amp; AP Police Department), State government employees etc.  
+            </p>
+            <h4>MODERN MEDICAL FACILITIES</h4>
+            <p>
+  This centre is state-of- the-art with multiple dental operatories along with digital radiography from KODAK and portable X-ray machine. It also has Diode laser from CAVO LASE, 4 X loops for micro-endodontics, DIAGNOdent, Bio pak for TMJ disorders, Power bleaching unit etc.
+
+This centre has specialists from all the departments of dentistry alongside general dentists &amp; dental hygienists between 9 a.m. – 9 p.m.
+
+Family dentistry is the forte of this centre. Apart from the routine dental procedures, cosmetic dentistry and dental implants are also being focussed upon.
+
+            </p>
+            <div class="cta">
+              <i class="fas fa-hospital"></i>
+              <a href="#">
+                <button class="cta-button">CHECKOUT OUR FACILITIES</button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 content-right">
+            <div class="card">
+              <a href="#">
+                <img src="images/pocket.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h6 class="card-head">Patient & Visitor Guide</h6>
+                  <p class="card-text">Plan your visit to our Clinic</p>
+                </div></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--SECTION1-->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>In a children-friendly environment!</h2>
+          <p>Caring for all your family’s dental needs.</p>
+        </div>
+        <div class="section-content">
+          <div class="row">
+            <div class="col-sm-12 col-lg-8">
+              <div class="row section-img">
+                <div class="col-xs-12 col-sm-6">
+                  <a href="#"
+                    ><img
+                      src="images/Clinic-Kid1.jpg"
+                      class="section-images img-fluid my-2"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <a href="#"
+                    ><img
+                      src="images/Clinic-Kid2.jpg"
+                      class="section-images img-fluid my-2"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <a href="#">
+                    <img
+                      src="images/Clinic-Kid3.jpg"
+                      class="section-images img-fluid my-2"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <a href="#">
+                    <img
+                      src="images/Clinic-Kid4.jpg"
+                      class="section-images img-fluid my-2"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-lg-4">
+              <div class="timetable-container mt-4">
+                <h4>WORKING HOURS</h4>
+                <span></span>
+                <div class="timetable">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>MONDAY</td>
+                        <td>09:00-20:00</td>
+                      </tr>
+                      <tr>
+                        <td>TUESDAY</td>
+                        <td>09:00-21:00</td>
+                      </tr>
+                      <tr>
+                        <td>WEDNESDAY</td>
+                        <td>09:00-20:00</td>
+                      </tr>
+                      <tr>
+                        <td>THURSDAY</td>
+                        <td>24-HOUR SHIFT</td>
+                      </tr>
+                      <tr>
+                        <td>FRIDAY</td>
+                        <td>09:00-21:00</td>
+                      </tr>
+                      <tr>
+                        <td>SATURDAY</td>
+                        <td>09:00-18:00</td>
+                      </tr>
+                      <tr>
+                        <td>SUNDAY</td>
+                        <td>11:00-19:00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="section-subcontent">
+                <h4>MODERN EQUIPMENT</h4>
+                <span></span>
+                <p>
+                  Personalized patient care is taken. When you visit one of our dental clinic you can expect to receive world class care. Expert
+                  physician specialists and caring clinical staff provide you
+                  with an exceptional health care experience.
+                </p>
+                <div class="cta-green">
+                  <i class="fas fa-tooth"></i>
+                  <a href="#"
+                    ><button class="cta-green-button">
+                      MAKE AN APPOINTMENT
+                    </button></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="logo-notext-container">
+            <img
+              src="images/dentist_logo_no_text.png"
+              class="logo-notext"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <article>
+      <div class="container">
+        <div class="main-head">
+          <h2>We specialize in Orthodontics</h2>
+          <p>Go ahead and use the cool Image Compare shortcode</p>
+        </div>
+        <div class="main-content">
+          <div class="row">
+            <div class="content-left col-sm-12 col-lg-6">
+              <p>
+                Come and meet one of our four world renowned facial plastic and
+                reconstructive surgeons, that can guide you through the process
+                that will change your life.
+              </p>
+              <p>
+                Reshape the appearance of body parts through cosmetic surgery.
+                Our surgeons are specialized in reconstructing face, neck, ears,
+                nose, eyes, breasts. We can also guide you through some our
+                patients’ photos and their life changing stories.
+              </p>
+              <h4>INTEGRATIVE MEDICINE</h4>
+              <span></span>
+              <p>
+                Alternative therapies stemming from the premise the mind, body
+                and spirit function as one and addressing all promotes healing.
+              </p>
+              <a href="#">
+                <button class="cta-button">
+                  Request an evaluation Meeting
+                </button>
+              </a>
+            </div>
+            <div class="content-right col-sm-12 col-lg-6">
+              <div class="img-comp-container">
+                <div class="img-comp-img">
+                  <img src="images/after_teeth.jpg" width="300" height="200" />
+                </div>
+                <div class="img-comp-img img-comp-overlay">
+                  <img src="images/before_teeth.jpg" width="300" height="200" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <!--TESTIMONIAL-->
+    <div class="testimonial">
+      <div class="container">
+        <div class="main-head">
+          <h2>We promised to take care… and delivered</h2>
+          <p>Testimonials Slider Feature</p>
+        </div>
+        <div
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          data-ride="carousel"
+        >
+          <ol class="carousel-indicators">
+            <li
+              data-target="#carouselExampleIndicators"
+              data-slide-to="0"
+              class="active"
+            ></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            
+            <div class="carousel-item active">
+              <p>
+                We Hyderabad old times they have experienced our pain but as painful as she wants it wise choice.
+ Result will be, is bound by an easy time when you would like them to repel any and in the same there is no her any longer.
+
+              </p>
+              <p><b>Rahul Shete</b> Customer</p>
+            </div>
+            <div class="carousel-item">
+              <p>
+                It is like the others betake himself born in the times of pleasure and pain. No, nor yet to obtain the praise with canticles, and so he is obliged to encounter the pain of regular eagerness to smooth out the entire never change.
+              </p>
+              <p><b>Karan Patil</b> Customer</p>
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleIndicators"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--CERTIFICATIONS-->
+    <div class="certification-part">
+      <div class="container">
+        <div class="main-head">
+          <h2>Certificates of Excellence</h2>
+          <p>Testimonials Slider Feature</p>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <img src="images/cert_1.png" class="cert-img img-fluid" alt="" />
+          </div>
+          <div class="col-md-2">
+            <img src="images/cert_2.png" class="cert-img img-fluid" alt="" />
+          </div>
+          <div class="col-md-2">
+            <img src="images/cert_3.png" class="cert-img img-fluid" alt="" />
+          </div>
+          <div class="col-md-2">
+            <img src="images/cert_4.png" class="cert-img img-fluid" alt="" />
+          </div>
+          <div class="col-md-2">
+            <img src="images/cert_5.png" class="cert-img img-fluid" alt="" />
+          </div>
+          <div class="col-md-2">
+            <img src="images/cert_6.png" class="cert-img img-fluid" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--FOOTER-->
+    <div class="footer-head">
+      <h2>WAIT! THERE'S A LOT MORE TO SEE!</h2>
+      <div class="cta-green">
+        <i class="fas fa-check"></i>
+        <a href="#">
+          <button class="cta-green-button">
+            CHECKOUT ALL THE AWESOME FEATURES
+          </button>
+        </a>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row footer-container">
+          <div class="col-xs-12 col-sm-4">
+            <div class="footer-left">
+              <p>
+                <img
+                  src="images/dentist_logo_.png"
+                  class="footer-logo"
+                  alt=""
+                />
+              </p>
+              <p>
+               Dental Clinic WebSite!
+              </p>
+              <p class="contact-details">
+                <a href="#"
+                  ><i class="fas fa-phone"></i> <span>(+1) 3129736196</span></a
+                >
+              </p>
+              <p class="contact-details">
+                <a href="mailto:tanmaypatil472@gmail.com">
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <span>
+                  <a href="mailto:tanmaypatil472@gmail.com"
+                    >tanmaypatil472@gmail.com
+                  </a>
+                </span>
+              </p>
+              <p class="contact-details">
+                <a href="#"><i class="fas fa-location-arrow"></i></a>
+                <a href="#"
+                  ><span>9-1-113 to 118, Ground Floor Amsri Shamira Complex,
+                    Old Lancer Road, Opposite St. Mary’s Degree College,
+                    Secunderabad, Telangana 500003</span></a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="footer-mid">
+              <div class="footer-mid-head">
+                <h4>QUICK LINKS</h4>
+              </div>
+              <div class="mid-content">
+                <i class="fas fa-arrow-circle-right"></i>
+                <span> Our Qualified Doctors</span>
+              </div>
+              <div class="mid-content">
+                <i class="fas fa-arrow-circle-right"></i>
+                <span> Treatments and Dental Services</span>
+              </div>
+              <div class="mid-content">
+                <i class="fas fa-arrow-circle-right"></i>
+                <span> Frequently Asked Questions</span>
+              </div>
+              <div class="mid-content">
+                <i class="fas fa-arrow-circle-right"></i>
+                <span> Contact Us</span>
+              </div>
+              
+              <div class="footer-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="footer-right">
+              <h4>HOURS OF OPERATION</h4>
+              <div class="timetable">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Monday</td>
+                      <td>8:30 AM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td>Tuesday</td>
+                      <td>8:30 AM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td>Wednesday</td>
+                      <td>8:30 AM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td>Thursday</td>
+                      <td>8:30 AM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td>Friday</td>
+                      <td>8:30 AM - 8:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td>Saturday-Sunday</td>
+                      <td>Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="cta-green">
+                  <i class="fas fa-tooth"></i>
+                  <a href="#">
+                    <button class="cta-green-button">
+                      MAKE AN APPOINTMENT
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+           <!-- Contact -->
+      <!-- Copyright -->
+      <div class="bg-custom container">
+        <div class="col-lg-6 mx-auto text-center">
+           <small>&copy; Copyright 2020 Tanmay Patil</small>
+        </div>
+     </div>
+     <!-- Copyright -->
+    </footer>
+    <!--BOOTSTRAP JS-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <!--COMPARING IMG JS-->
+    <script>
+      initComparisons();
+    </script>
+  </body>
+</html>
