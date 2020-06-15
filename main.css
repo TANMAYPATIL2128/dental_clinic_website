@@ -1,0 +1,491 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Oswald", sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  text-decoration: none;
+}
+/*MOBIL FIRST*/
+/*NAVBAR*/
+
+.navbar {
+  background-color: #13455e;
+}
+.logo-content {
+  font-size: 13px;
+  text-align: center;
+  color: #dfeef0;
+  margin: 0 0 0 20px;
+  font-weight: 400;
+}
+.navbar-toggler-icon {
+  background-image: url("https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff");
+}
+a.nav-link {
+  color: #dfeef0;
+  margin-right: 15px;
+  font-size: 15px;
+}
+a.nav-link:first-child {
+  margin-left: 15px;
+}
+.menubar {
+  display: none;
+}
+a:hover {
+  color: #ffa516 !important;
+  text-decoration: none;
+}
+
+ul.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  background-color: #13455e80;
+  margin-top: 25px;
+  float: right;
+}
+.navbar-collapse {
+  position: absolute;
+  top: 54px;
+  right: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  transition: all 0.3s ease;
+  display: block;
+}
+.navbar-collapse.collapsing {
+  height: auto !important;
+  margin-right: 50%;
+  transition: all 0.3s ease;
+  display: block;
+}
+.navbar-collapse.show {
+  right: 0;
+}
+
+/*CAROUSEL*/
+.carousel-caption.d-md-block {
+  color: #13455e;
+  text-align: left;
+}
+/*CAROUSEL NTH CHILD PROBLEM 2ND*/
+
+.carousel-para {
+  font-size: 4vh;
+  font-weight: 400;
+  width: 80%;
+}
+.second-different-capt {
+  text-align: right !important;
+}
+h5 {
+  font-size: 7vh;
+  font-weight: 700;
+  width: 80%;
+}
+/*CAROUSEL IMG SIZE PROBLEM*/
+/*.carousel-item img {
+    height: 100%;
+    width: auto;
+}*/
+/*TEASER PART*/
+.teaser-col:nth-child(odd) {
+  background-color: #59abb3;
+}
+.teaser-col:nth-child(even) {
+  background-color: #499aa2;
+}
+.teaser {
+  text-align: center;
+  justify-content: center;
+}
+/* Teaser hover none olmadı kontrol */
+.teaser-content:hover {
+  text-decoration: none;
+}
+.hgroup {
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
+.teaser-content p {
+  color: white;
+  font-size: 0.7em;
+}
+
+.teaser-cta {
+  background-color: #13455e;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  display: none;
+}
+/*
+.teaser-cta:hover {
+  display: unset;
+}
+*/
+/*TEASER HOVER DA PROBLEM VAR*/
+.teaser-content {
+  margin-top: 20px;
+}
+.teaser-col {
+  padding: 20px 20px 20px 40px;
+  width: 150px;
+  height: auto;
+  flex: 1;
+}
+
+/*MAIN*/
+
+main {
+  background-color: #dfeef0;
+  color: #13455e;
+  padding-bottom: 100px;
+}
+h2 {
+  font-size: 3em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.main-head {
+  padding-top: 7em;
+}
+.main-head p {
+  font-size: 1.3em;
+}
+.content-left p {
+  padding-top: 15px;
+  font-weight: 400;
+  font-size: 15px;
+}
+h4 {
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+}
+/*LINE DA PROB VAR BAK */
+h4::after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  position: absolute;
+  background-color: #13455e;
+  top: 50%;
+  margin-left: 10px;
+}
+.cta {
+  margin: 20px 0;
+  display: inline-flex;
+}
+.cta .fa-hospital {
+  color: white;
+  background-color: black;
+  padding: 10px;
+  font-size: 1.2em;
+}
+.cta-button {
+  color: white;
+  background-color: #13455e;
+  padding: 10px 25px;
+  font-size: 1em;
+  border: none;
+  font-weight: 700;
+}
+.card {
+  width: 100%;
+}
+.card-body {
+  background-color: #499aa2;
+  color: white;
+  text-align: center;
+}
+.card-head {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+.card-text {
+  color: white;
+  font-size: 0.7em;
+}
+/*SECTION1*/
+section {
+  background-color: #13455e;
+  color: white;
+  position: relative;
+}
+section:before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid transparent;
+  border-right: calc(50vw - 8px) solid transparent;
+  border-bottom: 40px solid #13455e;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+section:after {
+  content: "";
+  width: 100%;
+  border-left: calc(50vw - 8px) solid transparent;
+  border-right: calc(50vw - 8px) solid transparent;
+  background-color: #e5e5e5;
+  border-top: 40px solid #13455e;
+  display: block;
+}
+
+.section-head {
+  padding-top: 100px;
+}
+.section-head p {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+}
+.timetable-container {
+  margin-bottom: 50px;
+}
+.timetable td {
+  border-top: 1px solid white;
+  font-size: 15px;
+  color: white;
+}
+table {
+  width: 100%;
+}
+td:nth-child(even) {
+  text-align: right;
+}
+section h4::after {
+  content: "";
+  background-color: white;
+}
+.cta-green {
+  display: inline-flex;
+  margin-top: 20px;
+}
+.cta-green-button {
+  background-color: #5cb85c;
+  border: none;
+  font-size: 0.8em;
+  color: white;
+  padding: 1em 5em;
+}
+.cta-green .fa-tooth {
+  background-color: #357935;
+  color: white;
+  padding: 1em;
+  font-size: 0.8em;
+}
+img.logo-notext {
+  margin: 70px auto;
+}
+
+/*COMPARE SLIDER*/
+.img-comp-container {
+  margin: 50px 0;
+}
+.img-comp-slider {
+  top: 140px;
+}
+.content-right {
+  width: 100%;
+}
+.img-comp-img.img-comp-overlay:before {
+  content: "";
+  height: 100%;
+  background-color: white;
+  width: 2px;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: calc(100% - 2px);
+}
+/*ARTICLE*/
+article {
+  background-color: #e5e5e5;
+  padding-bottom: 100px;
+  background-image: url(images/BackgroundGrey.jpg);
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+}
+
+.logo-notext-container {
+  width: 100%;
+  display: flex;
+}
+article .cta-button {
+  background-color: #59abb3 !important;
+  text-transform: uppercase;
+  font-family: 14px !important;
+  margin-top: 20px;
+}
+/*TESTIMONIAL*/
+.testimonial {
+  background-color: #09405e;
+  color: white;
+  text-align: center;
+}
+.testimonial:after {
+  content: "";
+  width: 100%;
+  border-left: calc(50vw - 8px) solid transparent;
+  border-right: calc(50vw - 8px) solid transparent;
+  background-color: #e5e5e5;
+  border-top: 40px solid #09405e;
+  display: block;
+}
+
+.testimonial p {
+  padding: 15px 10px;
+  line-height: 1.8em;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+/*CERTIFICATIONS*/
+.certification-part {
+  background-color: #e5e5e5;
+  /*padding-bottom: 100px;*/
+}
+.certification-part .main-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.cert-img {
+  margin-bottom: 70px;
+}
+
+/*FOOTER*/
+.cta-green .fa-check {
+  background-color: #357935;
+  color: white;
+  padding: 10px;
+  font-size: 1.2em;
+}
+.footer-head {
+  text-align: center;
+  background-image: url(images/Footer_BG_.jpg);
+  padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.footer-head h2 {
+  font-size: 36px !important;
+  color: white;
+}
+
+footer {
+  background-color: #13455e;
+}
+footer:before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid transparent;
+  border-right: calc(50vw - 8px) solid transparent;
+  border-bottom: 40px solid #13455e;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+.footer-container {
+  padding: 50px 0;
+  color: #f5f9fa;
+  font-size: 15px !important;
+}
+.footer-left p {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+.footer-logo {
+  width: 100%;
+}
+footer h4::after {
+  content: "";
+  background-color: white !important;
+  top: 30% !important;
+}
+.footer-container h4 {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+footer span {
+  margin-left: 10px;
+}
+.footer-left .fa {
+  background-color: #0c354a;
+  color: white;
+  padding: 10px;
+}
+.contact-details a {
+  color: white !important;
+}
+
+.footer-social {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  text-align: center;
+}
+.fa-facebook-f {
+  background-color: #3b5998;
+  color: white;
+  padding: 10px;
+  margin-right: 15px;
+}
+.fa-twitter {
+  background-color: #00aced;
+  color: white;
+  padding: 10px;
+  margin-right: 15px;
+}
+.fa-instagram {
+  background: #1db954;
+  color: white;
+  padding: 10px;
+  margin-right: 15px;
+}
+/*MEDIA QUERIES*/
+@media screen and (min-width: 992px) {
+  .navbar-toggler {
+    display: none;
+  }
+  .menubar {
+    display: inline-flex;
+  }
+  .menubar a {
+    color: #f5f9fa;
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .menubar a:last-child {
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  footer .cta-green-button {
+    font-size: 0.6em;
+  }
+  footer .cta-green .fa-tooth {
+    font-size: 0.6em;
+  }
+
+
+
+
+
+}

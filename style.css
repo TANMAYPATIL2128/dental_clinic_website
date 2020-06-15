@@ -1,0 +1,356 @@
+/*CLINIC PART */
+header {
+  background-image: url(images/Clinic_head1.jpg);
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  position: relative;
+}
+.header-group {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+}
+.header-group h1 {
+  background-color: #59abb38c;
+  padding: 16px 0 13px 20px;
+  width: 100%;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.sub-title {
+  background-color: #59abb3;
+  padding: 16px 0 13px 20px;
+}
+.main-container h4 {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.main-container {
+  background-color: #e5e5e5;
+}
+.main-container:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid transparent;
+  border-right: calc(50vw - 8px) solid transparent;
+  border-top: 40px solid #e5e5e5;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+img.resize-img {
+  height: 7em;
+  width: 10em;
+  object-fit: cover;
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.295);
+  opacity: 0;
+  transition: .5s ease;
+  z-index: 2;
+}
+.overlay:hover {
+  opacity: 1;
+}
+
+/*RESIZE FOR DEVICES*/
+.clinic-first-cta button {
+  display: flex;
+  background: #5cb85c;
+  border: none;
+  color: non;
+  color: white;
+  font-weight: 700;
+  padding: 5px 15px;
+  margin: 30px auto;
+}
+/*ARTICLE*/
+.article1 {
+  background-color: #dfeef0;
+  color: #0c354a;
+}
+.article1:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid #59abb3;
+  border-right: calc(50vw - 8px) solid #59abb3;
+  border-top: 40px solid #dfeef0;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+
+.article1 h4 {
+  margin: 30px 0;
+}
+
+.second-cta button {
+  border: none;
+  padding: 5px 15px;
+  color: white;
+  font-weight: 700;
+  background-color: #59abb3;
+  margin: 30px auto;
+  display: flex;
+}
+.article2 {
+  background-color: #59abb3;
+  color: white;
+  display: flex;
+  text-align: center;
+  padding: 50px 0;
+}
+.article2 img {
+  margin-bottom: 30px;
+}
+.article2 p {
+  font-size: 21px;
+}
+.orange-button button {
+  border: none;
+  padding: 5px 15px;
+  background-color: #f0ad4e;
+  color: white;
+  font-weight: 700;
+  margin: 30px 0;
+}
+
+/*OUR DOCTORS PART*/
+.dc-header {
+  height: 200px;
+  background-color: #59abb3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.dc-header h1 {
+  font-size: 46px;
+  font-weight: 700;
+  margin-top: 100px;
+}
+.post-title {
+  font-size: 21px;
+}
+/*DOC MAIN*/
+.dc-main {
+  background-color: #dfeef0;
+  padding-top: 50px;
+}
+.dc-main-para1 {
+  text-align: center;
+  color: #0c354a;
+  margin: 50px 15px !important;
+  font-weight: 400;
+  font-size: 15px !important;
+}
+.dc-main .card-body {
+  background-color: white;
+  color: #323232;
+}
+/*FIRST 2 OF CHILD IS PROBLEM HERE*/
+/*
+.dc-main .card-body:nth-child(-n+2) {
+ 
+    background-color: #0c354a;
+    color: white;
+}
+*/
+
+.dc-main .card-title {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+.dc-main .card-text {
+  font-size: 1em;
+  color: #323232;
+}
+.dc-main h4 {
+  color: #0c354a;
+  margin: 40px auto;
+}
+img.dc-images {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  padding-top: 50px;
+}
+.dc-main h3 {
+  font-size: 32px;
+  color: #0c354a;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.dc-main p {
+  font-size: 20px;
+  color: #0c354a;
+  margin-bottom: 20px;
+}
+.dc-main p:nth-of-type(2) {
+  font-size: 15px;
+  color: #0c354a;
+  margin: 25px 0;
+}
+.dc-main:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid #59abb3;
+  border-right: calc(50vw - 8px) solid #59abb3;
+  border-top: 40px solid #dfeef0;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+
+
+
+
+.dc-cta button {
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  margin-bottom: 50px;
+  background-color: #59abb3;
+  font-weight: 700;
+}
+/*CONTACT*/
+.contact-main {
+  background-color: #13455e;
+  padding: 50px 0;
+  color: white;
+}
+.contact-main .col-md-6 {
+  padding: 30px 40px;
+}
+
+.form-control {
+  background-color: #dfeef0;
+  border-radius: 0em;
+  border: none;
+}
+textarea {
+  resize: none;
+}
+label {
+  margin: 0;
+  padding-top: 10px;
+}
+.contact-cta button {
+  background-color: #59abb3;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  margin-top: 10px;
+}
+.contact-main-content {
+  padding-top: 50px;
+}
+.contact-main-content h4 {
+  text-transform: uppercase;
+}
+.contact-main h4::after {
+  background-color: white;
+}
+
+.contact-main-content p {
+  font-weight: 400;
+}
+/*TEASER*/
+.contact-teaser {
+  background-color: #59abb3;
+  text-align: center;
+  color: white;
+}
+.contact-teaser:before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid #13455e;
+  border-right: calc(50vw - 8px) solid #13455e;
+  border-bottom: 40px solid #59abb3;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+.contact-teaser:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-left: calc(50vw - 8px) solid #0f3549;
+  border-right: calc(50vw - 8px) solid #0f3549;
+
+  border-top: 40px solid #59abb3;
+  display: block;
+  position: relative;
+  background-color: #dfeef0;
+}
+
+
+
+
+.figure i {
+  font-size: 80px;
+  margin-bottom: 25px;
+}
+.figure-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.contact-prefooter {
+  background-color: #0f3549;
+  padding: 80px 0;
+  color: white;
+  text-align: center;
+}
+.contact-prefooter p {
+  font-size: 21px;
+}
+.contact-mailbox {
+  margin: 40px 0;
+}
+
+.contact-mailbox input {
+  width: 30%;
+  display: inline-block;
+  background-color: #dfeef0;
+  padding: 7px 22px !important;
+}
+.contact-mailbox button {
+  background-color: #13455e !important;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  font-weight: 700;
+}
+/*MEDIA QUERİES*/
+@media screen and (min-width: 992px) {
+  img.resize-img {
+    height: 10em;
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+
+
+
+
+}
